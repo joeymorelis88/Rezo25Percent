@@ -1,0 +1,17 @@
+{
+  "name": "rezostar/corporation-website",
+  "description": "Rezostar Corporation corporate website with XAMPP, PHP 7.4.20, Bootstrap 5.3, and MySQL integration.",
+  "type": "project",
+  "require": {
+    "php": "7.4.20",
+    "ext-json": "*",
+    "ext-mbstring": "*",
+    "ext-pdo": "*",
+    "ext-pdo_mysql": "*"
+  },
+  "config": {
+    "platform": {
+      "php": "7.4.20"
+    }
+  }
+}
