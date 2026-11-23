@@ -35,45 +35,45 @@ const FEATURED_SPEC: Array<{
     slug: 'top-glove',
     displayName: 'Top Glove',
     shortSummary: 'Rubber gloves and other safety supplies.',
-    imageSrc: '/assets/aistudio/top-glove-card.jpg',
+    imageSrc: './assets/aistudio/top-glove-card.jpg',
   },
   {
     slug: 'world-work',
     displayName: 'World Work',
     shortSummary: 'Saliva ejectors, bibs and other dental supplies.',
-    imageSrc: '/assets/aistudio/world-work-card.jpg',
+    imageSrc: './assets/aistudio/world-work-card.jpg',
   },
   {
     slug: 'kjt',
     displayName: 'KJT',
     shortSummary: 'Wheelchairs, commode chairs and other rehabilitation equipment.',
-    imageSrc: '/assets/aistudio/kjt-card.jpg',
+    imageSrc: './assets/aistudio/kjt-card.jpg',
   },
   {
     slug: 'major-dental',
     displayName: 'Major Dental',
     shortSummary: 'High-quality dental materials for laboratories and dental clinics',
-    imageSrc: '/assets/aistudio/major-dental-card.jpg',
+    imageSrc: './assets/aistudio/major-dental-card.jpg',
   },
   {
     slug: 'contec-medical',
     displayName: 'Contec Medical Systems',
     shortSummary:
       'Quality medical devices for hospitals, operating rooms, imaging and others.',
-    imageSrc: '/assets/aistudio/contec-medical-card.jpg',
+    imageSrc: './assets/aistudio/contec-medical-card.jpg',
   },
   {
     slug: 'viscot',
     displayName: 'Viscot',
     shortSummary:
       'Disposable medical devices, surgical markers and supplies born from real medical insight.',
-    imageSrc: '/assets/aistudio/viscot-card.jpg',
+    imageSrc: './assets/aistudio/viscot-card.jpg',
   },
 ];
 
 const HEALTHCARE_LOGO_MAP: Record<string, string> = {
-  'great-glove': '/assets/aistudio/Great_Glove_-_Logo_970bf1e6.jpg',
-  'hcd-homecare': '/assets/aistudio/HCD_-_Logo_ff17ee7f.jpg',
+  'great-glove': './assets/aistudio/Great_Glove_-_Logo_970bf1e6.jpg',
+  'hcd-homecare': './assets/aistudio/HCD_-_Logo_ff17ee7f.jpg',
 };
 
 interface DetailBrandState {
@@ -182,7 +182,7 @@ export const HealthcareBrandsPage: React.FC<HealthcareBrandsPageProps> = ({
           </div>
           <div className="overflow-hidden rounded-[2px] bg-slate-100 shadow-[0_8px_22px_rgba(9,43,71,0.08)]">
             <img
-              src="/assets/aistudio/healthcare-hero.jpg"
+              src="./assets/aistudio/healthcare-hero.jpg"
               alt="Medical professionals reviewing patient care files"
               referrerPolicy="no-referrer"
               className="h-[190px] w-full object-cover sm:h-[225px]"

@@ -23,49 +23,49 @@ const CAROUSEL_TILES: CarouselBrandTile[] = [
     slug: 'axe-brand',
     name: 'Axe Brand Universal Oil',
     category: 'wellness',
-    logoSrc: '/assets/aistudio/Axe_Brand_-_Logo_d1a0d76e.png',
+    logoSrc: './assets/aistudio/Axe_Brand_-_Logo_d1a0d76e.png',
   },
   {
     slug: 'glomed',
     name: 'Glomed',
     category: 'healthcare',
-    logoSrc: '/assets/aistudio/Glomed_-_Logo_6d1e4e21.png',
+    logoSrc: './assets/aistudio/Glomed_-_Logo_6d1e4e21.png',
   },
   {
     slug: 'great-glove',
     name: 'Great Glove',
     category: 'healthcare',
-    logoSrc: '/assets/aistudio/Great_Glove_-_Logo_970bf1e6.jpg',
+    logoSrc: './assets/aistudio/Great_Glove_-_Logo_970bf1e6.jpg',
   },
   {
     slug: 'hcd-homecare',
     name: 'HCD',
     category: 'healthcare',
-    logoSrc: '/assets/aistudio/HCD_-_Logo_ff17ee7f.jpg',
+    logoSrc: './assets/aistudio/HCD_-_Logo_ff17ee7f.jpg',
   },
   {
     slug: 'mount-hagen',
     name: 'Mount Hagen',
     category: 'wellness',
-    logoSrc: '/assets/aistudio/Mount_Hagen_-Logo_4ffbfbe8.jfif',
+    logoSrc: './assets/aistudio/Mount_Hagen_-Logo_4ffbfbe8.jfif',
   },
   {
     slug: 'nova-wellness',
     name: 'Nova',
     category: 'wellness',
-    logoSrc: '/assets/aistudio/Nova_Wellness_Store_Logo_8da77941.png',
+    logoSrc: './assets/aistudio/Nova_Wellness_Store_Logo_8da77941.png',
   },
   {
     slug: 'sensav',
     name: 'SensaV',
     category: 'wellness',
-    logoSrc: '/assets/aistudio/SensaV_logo_b23f1185.jpg',
+    logoSrc: './assets/aistudio/SensaV_logo_b23f1185.jpg',
   },
   {
     slug: 'starshots-coffee',
     name: 'Starshots Coffee',
     category: 'wellness',
-    logoSrc: '/assets/aistudio/Starshots_Coffee_-_Logo_04cae2e1.jpg',
+    logoSrc: './assets/aistudio/Starshots_Coffee_-_Logo_04cae2e1.jpg',
   },
   {
     slug: 'three-legs',
@@ -210,7 +210,7 @@ export default function App() {
             aria-label="Rezostar Corporation Home"
           >
             <img
-              src="/assets/aistudio/Rezostar_Corporation_-_logo.jpg_369df93f.jpg"
+              src="./assets/aistudio/Rezostar_Corporation_-_logo.jpg_369df93f.jpg"
               alt="Rezostar Corporation"
               referrerPolicy="no-referrer"
               className="h-10 w-auto object-contain sm:h-11"
@@ -462,7 +462,7 @@ export default function App() {
           <section className="relative flex min-h-[480px] flex-col justify-between overflow-hidden bg-[#eef5fa] md:min-h-[560px]">
             <div className="absolute inset-0 z-0">
               <img
-                src="/assets/aistudio/rezostar-family_2a68b181.jpg"
+                src="./assets/aistudio/rezostar-family_2a68b181.jpg"
                 alt="Happy Filipino family outdoors"
                 referrerPolicy="no-referrer"
                 className="h-full w-full object-cover object-[70%_25%]"
@@ -539,7 +539,7 @@ export default function App() {
                     SINCE
                   </span>
                   <img
-                    src="/assets/aistudio/Rezostar-_Icons-03_5301bebe.png"
+                    src="./assets/aistudio/Rezostar-_Icons-03_5301bebe.png"
                     alt="2006"
                     referrerPolicy="no-referrer"
                     className="h-12 w-auto object-contain"
@@ -549,7 +549,7 @@ export default function App() {
                 {/* 2. 15+ Brands Distributed */}
                 <div className="flex flex-col items-center justify-center text-center">
                   <img
-                    src="/assets/aistudio/Rezostar-_Icons-01_25ff761e.png"
+                    src="./assets/aistudio/Rezostar-_Icons-01_25ff761e.png"
                     alt="15+"
                     referrerPolicy="no-referrer"
                     className="mb-2 h-12 w-auto object-contain"
@@ -564,7 +564,7 @@ export default function App() {
                 {/* 3. Nationwide Logistics Network */}
                 <div className="flex flex-col items-center justify-center text-center">
                   <img
-                    src="/assets/aistudio/Rezostar-_Icons-02_aea964bf.png"
+                    src="./assets/aistudio/Rezostar-_Icons-02_aea964bf.png"
                     alt="Nationwide Logistics Network"
                     referrerPolicy="no-referrer"
                     className="mb-2 h-12 w-auto object-contain"
@@ -582,7 +582,7 @@ export default function App() {
                 {/* 4. FDA-Registered Import & Distribution */}
                 <div className="flex flex-col items-center justify-center text-center">
                   <img
-                    src="/assets/aistudio/Rezostar-_Icons-04_7ca7b3bd.png"
+                    src="./assets/aistudio/Rezostar-_Icons-04_7ca7b3bd.png"
                     alt="FDA-Registered Import and Distribution"
                     referrerPolicy="no-referrer"
                     className="mb-2 h-12 w-auto object-contain"
@@ -600,7 +600,7 @@ export default function App() {
                 {/* 5. Star Paper Corp. Heritage */}
                 <div className="flex flex-col items-center justify-center text-center sm:col-span-2 lg:col-span-1">
                   <img
-                    src="/assets/aistudio/Rezostar-_Icons-05_f27bd5b5.png"
+                    src="./assets/aistudio/Rezostar-_Icons-05_f27bd5b5.png"
                     alt="Star Paper Corp. Heritage"
                     referrerPolicy="no-referrer"
                     className="mb-2 h-12 w-auto object-contain"
@@ -633,7 +633,7 @@ export default function App() {
               <article className="flex flex-col">
                 <div className="h-[240px] w-full overflow-hidden bg-stone-200 sm:h-[290px] lg:h-[320px]">
                   <img
-                    src="/assets/aistudio/wellness-brands_1032e52a.jpg"
+                    src="./assets/aistudio/wellness-brands_1032e52a.jpg"
                     alt="Natural and organic wellness products"
                     referrerPolicy="no-referrer"
                     className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.03]"
@@ -657,7 +657,7 @@ export default function App() {
               <article className="flex flex-col">
                 <div className="h-[240px] w-full overflow-hidden bg-slate-200 sm:h-[290px] lg:h-[320px]">
                   <img
-                    src="/assets/aistudio/healthcare-brands_12def61b.jpg"
+                    src="./assets/aistudio/healthcare-brands_12def61b.jpg"
                     alt="Medical gloves, masks, and dental supplies"
                     referrerPolicy="no-referrer"
                     className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.03]"
@@ -767,7 +767,7 @@ export default function App() {
 
               <div className="overflow-hidden rounded shadow-[0_10px_28px_rgba(9,43,71,0.08)]">
                 <img
-                  src="/assets/aistudio/IMG_3607_edit_9ab369b4.jpg"
+                  src="./assets/aistudio/IMG_3607_edit_9ab369b4.jpg"
                   alt="Interior of Nova Wellness Store featuring organic health and grocery shelves"
                   referrerPolicy="no-referrer"
                   className="h-[250px] w-full object-cover sm:h-[310px]"
@@ -811,7 +811,7 @@ export default function App() {
               aria-label="Rezostar Corporation"
             >
               <img
-                src="/assets/aistudio/Rezostar_Corporation_-_logo.jpg_369df93f.jpg"
+                src="./assets/aistudio/Rezostar_Corporation_-_logo.jpg_369df93f.jpg"
                 alt="Rezostar Corporation"
                 referrerPolicy="no-referrer"
                 className="h-11 w-auto object-contain"

@@ -423,7 +423,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ initialBrand = '' }) =
 
                   <div className="overflow-hidden rounded-[2px] shadow-[0_6px_18px_rgba(9,43,71,0.08)]">
                     <img
-                      src="/assets/aistudio/StarPaper_Office_f73fba5e.png"
+                      src="./assets/aistudio/StarPaper_Office_f73fba5e.png"
                       alt="Star Paper Corporation and Rezostar Corporation Head Office at 46 Joy Street"
                       referrerPolicy="no-referrer"
                       className="h-[190px] w-full object-cover sm:h-[152px]"

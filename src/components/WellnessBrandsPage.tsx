@@ -35,53 +35,53 @@ const FEATURED_SPEC: Array<{
     slug: 'axe-brand',
     displayName: 'Axe Brand Universal Oil',
     shortSummary: 'Multi-use medicated herbal oil for pain relief and decongestion.',
-    imageSrc: '/assets/aistudio/axe-brand-card.jpg',
+    imageSrc: './assets/aistudio/axe-brand-card.jpg',
   },
   {
     slug: 'chandanalepa',
     displayName: 'Chandanalepa',
     shortSummary: 'Herbal lotions and soaps.',
-    imageSrc: '/assets/aistudio/chandanalepa-card.jpg',
+    imageSrc: './assets/aistudio/chandanalepa-card.jpg',
   },
   {
     slug: 'honeylife',
     displayName: 'Honeylife',
     shortSummary: 'Manuka honey and bee products.',
-    imageSrc: '/assets/aistudio/honeylife-card.jpg',
+    imageSrc: './assets/aistudio/honeylife-card.jpg',
   },
   {
     slug: 'tea-tree-therapy',
     displayName: 'Tea Tree Therapy',
     shortSummary: 'Tea tree oil and personal care essentials.',
-    imageSrc: '/assets/aistudio/tea-tree-therapy-card.jpg',
+    imageSrc: './assets/aistudio/tea-tree-therapy-card.jpg',
   },
   {
     slug: 'auromere',
     displayName: 'Auromere',
     shortSummary: 'Ayurvedic personal care products.',
-    imageSrc: '/assets/aistudio/auromere-card.jpg',
+    imageSrc: './assets/aistudio/auromere-card.jpg',
   },
   {
     slug: 'eden-foods',
     displayName: 'Eden Foods',
     shortSummary:
       'A natural food company, offering everything from pure whole grain to organic beans.',
-    imageSrc: '/assets/aistudio/eden-foods-card.jpg',
+    imageSrc: './assets/aistudio/eden-foods-card.jpg',
   },
 ];
 
 const WELLNESS_LOGO_MAP: Record<string, string> = {
-  auromere: '/assets/aistudio/Auromere_899fede4.jpg',
-  'axe-brand': '/assets/aistudio/Axe_Brand_-_Logo_d1a0d76e.png',
-  badger: '/assets/aistudio/Badger_7514e900.jpg',
-  bragg: '/assets/aistudio/Bragg_-_Logo_364856ce.jpg',
-  carlson: '/assets/aistudio/Carlson_Logo_70f5ad6e.jpg',
-  chandanalepa: '/assets/aistudio/Chandanalepa_975ed527.jpg',
-  cocomi: '/assets/aistudio/Cocomi_Bio_b7e01b6c.jpg',
-  'dr-johns': '/assets/aistudio/DrJohnsHealthySweets_29169c46.jpg',
-  'mount-hagen': '/assets/aistudio/Mount_Hagen_-Logo_4ffbfbe8.jfif',
-  sensav: '/assets/aistudio/SensaV_logo_b23f1185.jpg',
-  'starshots-coffee': '/assets/aistudio/Starshots_Coffee_-_Logo_04cae2e1.jpg',
+  auromere: './assets/aistudio/Auromere_899fede4.jpg',
+  'axe-brand': './assets/aistudio/Axe_Brand_-_Logo_d1a0d76e.png',
+  badger: './assets/aistudio/Badger_7514e900.jpg',
+  bragg: './assets/aistudio/Bragg_-_Logo_364856ce.jpg',
+  carlson: './assets/aistudio/Carlson_Logo_70f5ad6e.jpg',
+  chandanalepa: './assets/aistudio/Chandanalepa_975ed527.jpg',
+  cocomi: './assets/aistudio/Cocomi_Bio_b7e01b6c.jpg',
+  'dr-johns': './assets/aistudio/DrJohnsHealthySweets_29169c46.jpg',
+  'mount-hagen': './assets/aistudio/Mount_Hagen_-Logo_4ffbfbe8.jfif',
+  sensav: './assets/aistudio/SensaV_logo_b23f1185.jpg',
+  'starshots-coffee': './assets/aistudio/Starshots_Coffee_-_Logo_04cae2e1.jpg',
 };
 
 interface DetailBrandState {
@@ -190,7 +190,7 @@ export const WellnessBrandsPage: React.FC<WellnessBrandsPageProps> = ({
           </div>
           <div className="overflow-hidden rounded-[2px] bg-stone-100 shadow-[0_8px_22px_rgba(9,43,71,0.08)]">
             <img
-              src="/assets/aistudio/wellness-hero.jpg"
+              src="./assets/aistudio/wellness-hero.jpg"
               alt="Fresh bowl with granola, berries, and organic honey"
               referrerPolicy="no-referrer"
               className="h-[190px] w-full object-cover sm:h-[225px]"

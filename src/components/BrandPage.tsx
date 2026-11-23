@@ -35,68 +35,68 @@ interface RelatedBrandCard {
 const FEATURED_IMAGE_MAP: Record<string, { displayName: string; imageSrc: string }> = {
   'axe-brand': {
     displayName: 'Axe Brand Universal Oil',
-    imageSrc: '/assets/aistudio/axe-brand-card.jpg',
+    imageSrc: './assets/aistudio/axe-brand-card.jpg',
   },
   chandanalepa: {
     displayName: 'Chandanalepa',
-    imageSrc: '/assets/aistudio/chandanalepa-card.jpg',
+    imageSrc: './assets/aistudio/chandanalepa-card.jpg',
   },
   honeylife: {
     displayName: 'Honeylife',
-    imageSrc: '/assets/aistudio/honeylife-card.jpg',
+    imageSrc: './assets/aistudio/honeylife-card.jpg',
   },
   'tea-tree-therapy': {
     displayName: 'Tea Tree Therapy',
-    imageSrc: '/assets/aistudio/tea-tree-therapy-card.jpg',
+    imageSrc: './assets/aistudio/tea-tree-therapy-card.jpg',
   },
   auromere: {
     displayName: 'Auromere',
-    imageSrc: '/assets/aistudio/auromere-card.jpg',
+    imageSrc: './assets/aistudio/auromere-card.jpg',
   },
   'eden-foods': {
     displayName: 'Eden Foods',
-    imageSrc: '/assets/aistudio/eden-foods-card.jpg',
+    imageSrc: './assets/aistudio/eden-foods-card.jpg',
   },
   'top-glove': {
     displayName: 'Top Glove',
-    imageSrc: '/assets/aistudio/top-glove-card.jpg',
+    imageSrc: './assets/aistudio/top-glove-card.jpg',
   },
   'world-work': {
     displayName: 'World Work',
-    imageSrc: '/assets/aistudio/world-work-card.jpg',
+    imageSrc: './assets/aistudio/world-work-card.jpg',
   },
   kjt: {
     displayName: 'KJT',
-    imageSrc: '/assets/aistudio/kjt-card.jpg',
+    imageSrc: './assets/aistudio/kjt-card.jpg',
   },
   'major-dental': {
     displayName: 'Major Dental',
-    imageSrc: '/assets/aistudio/major-dental-card.jpg',
+    imageSrc: './assets/aistudio/major-dental-card.jpg',
   },
   'contec-medical': {
     displayName: 'Contec Medical Systems',
-    imageSrc: '/assets/aistudio/contec-medical-card.jpg',
+    imageSrc: './assets/aistudio/contec-medical-card.jpg',
   },
   viscot: {
     displayName: 'Viscot',
-    imageSrc: '/assets/aistudio/viscot-card.jpg',
+    imageSrc: './assets/aistudio/viscot-card.jpg',
   },
 };
 
 const BRAND_LOGO_MAP: Record<string, string> = {
-  auromere: '/assets/aistudio/Auromere_899fede4.jpg',
-  'axe-brand': '/assets/aistudio/Axe_Brand_-_Logo_d1a0d76e.png',
-  badger: '/assets/aistudio/Badger_7514e900.jpg',
-  bragg: '/assets/aistudio/Bragg_-_Logo_364856ce.jpg',
-  carlson: '/assets/aistudio/Carlson_Logo_70f5ad6e.jpg',
-  chandanalepa: '/assets/aistudio/Chandanalepa_975ed527.jpg',
-  cocomi: '/assets/aistudio/Cocomi_Bio_b7e01b6c.jpg',
-  'dr-johns': '/assets/aistudio/DrJohnsHealthySweets_29169c46.jpg',
-  'great-glove': '/assets/aistudio/Great_Glove_-_Logo_970bf1e6.jpg',
-  'hcd-homecare': '/assets/aistudio/HCD_-_Logo_ff17ee7f.jpg',
-  'mount-hagen': '/assets/aistudio/Mount_Hagen_-Logo_4ffbfbe8.jfif',
-  sensav: '/assets/aistudio/SensaV_logo_b23f1185.jpg',
-  'starshots-coffee': '/assets/aistudio/Starshots_Coffee_-_Logo_04cae2e1.jpg',
+  auromere: './assets/aistudio/Auromere_899fede4.jpg',
+  'axe-brand': './assets/aistudio/Axe_Brand_-_Logo_d1a0d76e.png',
+  badger: './assets/aistudio/Badger_7514e900.jpg',
+  bragg: './assets/aistudio/Bragg_-_Logo_364856ce.jpg',
+  carlson: './assets/aistudio/Carlson_Logo_70f5ad6e.jpg',
+  chandanalepa: './assets/aistudio/Chandanalepa_975ed527.jpg',
+  cocomi: './assets/aistudio/Cocomi_Bio_b7e01b6c.jpg',
+  'dr-johns': './assets/aistudio/DrJohnsHealthySweets_29169c46.jpg',
+  'great-glove': './assets/aistudio/Great_Glove_-_Logo_970bf1e6.jpg',
+  'hcd-homecare': './assets/aistudio/HCD_-_Logo_ff17ee7f.jpg',
+  'mount-hagen': './assets/aistudio/Mount_Hagen_-Logo_4ffbfbe8.jfif',
+  sensav: './assets/aistudio/SensaV_logo_b23f1185.jpg',
+  'starshots-coffee': './assets/aistudio/Starshots_Coffee_-_Logo_04cae2e1.jpg',
 };
 
 const WELLNESS_RELATED_ORDER = [
@@ -148,12 +148,12 @@ export const BrandPage: React.FC<BrandPageProps> = ({
   const logoSrc = BRAND_LOGO_MAP[activeBrand.slug];
 
   const heroImageSrc = isPearlieWhite
-    ? '/assets/aistudio/pearlie-white-hero.jpg'
+    ? './assets/aistudio/pearlie-white-hero.jpg'
     : featuredMeta?.imageSrc ||
       logoSrc ||
       (isHealthcare
-        ? '/assets/aistudio/healthcare-brands_12def61b.jpg'
-        : '/assets/aistudio/wellness-brands_1032e52a.jpg');
+        ? './assets/aistudio/healthcare-brands_12def61b.jpg'
+        : './assets/aistudio/wellness-brands_1032e52a.jpg');
 
   const heroIsLogo = !isPearlieWhite && !featuredMeta?.imageSrc && Boolean(logoSrc);
 
@@ -187,27 +187,27 @@ export const BrandPage: React.FC<BrandPageProps> = ({
         {
           title: 'Pearlie White Advanced Whitening Toothpaste',
           subtitle: 'Advanced Whitening Fluoride Formula',
-          imageSrc: '/assets/aistudio/pearlie-white-prod-1.jpg',
+          imageSrc: './assets/aistudio/pearlie-white-prod-1.jpg',
         },
         {
           title: 'Pearlie White Advanced Whitening Toothpaste',
           subtitle: 'All-Day Active Whitening Dental Flossers',
-          imageSrc: '/assets/aistudio/pearlie-white-prod-2.jpg',
+          imageSrc: './assets/aistudio/pearlie-white-prod-2.jpg',
         },
         {
           title: 'Pearlie White Advanced Whitening Toothpaste',
           subtitle: 'DefenRinse Gum Care Mouth Rinse',
-          imageSrc: '/assets/aistudio/pearlie-white-prod-3.jpg',
+          imageSrc: './assets/aistudio/pearlie-white-prod-3.jpg',
         },
         {
           title: 'Pearlie White Advanced Whitening Toothpaste',
           subtitle: 'Fluorinze Anti-Bacterial Fluoride Rinse',
-          imageSrc: '/assets/aistudio/pearlie-white-prod-4.jpg',
+          imageSrc: './assets/aistudio/pearlie-white-prod-4.jpg',
         },
         {
           title: 'Pearlie White Sensitive Fluoride Toothpaste',
           subtitle: 'Enamel-Safe Daily Oral Protection',
-          imageSrc: '/assets/aistudio/pearlie-white-hero.jpg',
+          imageSrc: './assets/aistudio/pearlie-white-hero.jpg',
         },
       ];
     }
@@ -454,7 +454,7 @@ export const BrandPage: React.FC<BrandPageProps> = ({
             className="mt-3 inline-flex items-center justify-center rounded-md px-4 py-1.5 transition-all hover:-translate-y-0.5 hover:bg-[#fff9ef]"
           >
             <img
-              src="/assets/aistudio/nova-wellness-logo.png"
+              src="./assets/aistudio/nova-wellness-logo.png"
               alt="Nova Wellness Store"
               referrerPolicy="no-referrer"
               className="h-[54px] w-auto object-contain"

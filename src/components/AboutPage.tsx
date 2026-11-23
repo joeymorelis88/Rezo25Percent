@@ -159,7 +159,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
 
           <div className="flex items-end justify-center lg:justify-end">
             <img
-              src="/assets/aistudio/d62b19ea-fff1-4c0e-ab5b-61ee751bbeed_da4ebf67.png"
+              src="./assets/aistudio/d62b19ea-fff1-4c0e-ab5b-61ee751bbeed_da4ebf67.png"
               alt="Smiling Filipino family together"
               referrerPolicy="no-referrer"
               className="max-h-[340px] w-full max-w-[540px] object-contain object-bottom sm:max-h-[365px]"
@@ -252,7 +252,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
 
           <div className="overflow-hidden rounded shadow-[0_10px_28px_rgba(9,43,71,0.08)]">
             <img
-              src="/assets/aistudio/StarPaperCorporationHQ_063ffced.jpg"
+              src="./assets/aistudio/StarPaperCorporationHQ_063ffced.jpg"
               alt="Star Paper Corporation and Rezostar logistics headquarters"
               referrerPolicy="no-referrer"
               className="h-[240px] w-full object-cover sm:h-[330px]"
@@ -324,7 +324,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
         <div className="mx-auto grid max-w-[1180px] grid-cols-1 items-center gap-8 px-5 sm:px-6 lg:grid-cols-2 lg:gap-12">
           <div className="overflow-hidden rounded shadow-[0_10px_28px_rgba(9,43,71,0.08)]">
             <img
-              src="/assets/aistudio/IMG_3601_copy_f68af01a.jpg"
+              src="./assets/aistudio/IMG_3601_copy_f68af01a.jpg"
               alt="Nova Wellness Store aisles stocked with natural and organic food and wellness products"
               referrerPolicy="no-referrer"
               className="h-[250px] w-full object-cover sm:h-[340px]"

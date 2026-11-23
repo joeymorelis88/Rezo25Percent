@@ -118,7 +118,7 @@ export const BecomeARetailerPage: React.FC<BecomeARetailerPageProps> = ({
 
           <div className="overflow-hidden rounded-[2px] bg-[#eef4f8] shadow-[0_10px_28px_rgba(9,43,71,0.08)]">
             <img
-              src="/assets/aistudio/retailer-hero.jpg"
+              src="./assets/aistudio/retailer-hero.jpg"
               alt="Rezostar delivery partner shaking hands with a retailer while handing over boxed inventory"
               className="aspect-[16/10] w-full object-cover"
             />
