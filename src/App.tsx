@@ -1,76 +1,35 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight, Menu, Search, X } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { ChevronLeft, ChevronRight, Menu, X } from 'lucide-react';
 import {
-  ALL_BRANDS,
   HEALTHCARE_BRANDS,
   WELLNESS_BRANDS,
   type BrandCategory,
-  type BrandItem,
 } from './data/brands';
 import { InquiryModal } from './components/InquiryModal';
 import { AboutPage } from './components/AboutPage';
 import { ContactPage } from './components/ContactPage';
 import { BecomeARetailerPage } from './components/BecomeARetailerPage';
 import { NovaChannelsModal } from './components/NovaChannelsModal';
-import { WellnessBrandsPage } from './components/WellnessBrandsPage';
-import { HealthcareBrandsPage } from './components/HealthcareBrandsPage';
-import { BrandPage } from './components/BrandPage';
 
 interface CarouselBrandTile {
   slug: string;
   name: string;
   category: BrandCategory;
-  logoSrc: string;
+  logoSrc?: string;
 }
 
 const CAROUSEL_TILES: CarouselBrandTile[] = [
   {
-    slug: 'auromere',
-    name: 'Auromere',
-    category: 'wellness',
-    logoSrc: '/assets/aistudio/Auromere_899fede4.jpg',
-  },
-  {
-    slug: 'badger',
-    name: 'Badger',
-    category: 'wellness',
-    logoSrc: '/assets/aistudio/Badger_7514e900.jpg',
-  },
-  {
-    slug: 'carlson',
-    name: 'Carlson',
-    category: 'wellness',
-    logoSrc: '/assets/aistudio/Carlson_Logo_70f5ad6e.jpg',
-  },
-  {
-    slug: 'cocomi',
-    name: 'Cocomi',
-    category: 'wellness',
-    logoSrc: '/assets/aistudio/Cocomi_Bio_b7e01b6c.jpg',
-  },
-  {
-    slug: 'dr-johns',
-    name: "Dr. John's",
-    category: 'wellness',
-    logoSrc: '/assets/aistudio/DrJohnsHealthySweets_29169c46.jpg',
-  },
-  {
-    slug: 'chandanalepa',
-    name: 'Chandanalepa',
-    category: 'wellness',
-    logoSrc: '/assets/aistudio/Chandanalepa_975ed527.jpg',
-  },
-  {
-    slug: 'bragg',
-    name: 'Bragg',
-    category: 'wellness',
-    logoSrc: '/assets/aistudio/Bragg_-_Logo_364856ce.jpg',
-  },
-  {
     slug: 'axe-brand',
-    name: 'Axe Brand',
+    name: 'Axe Brand Universal Oil',
     category: 'wellness',
     logoSrc: '/assets/aistudio/Axe_Brand_-_Logo_d1a0d76e.png',
+  },
+  {
+    slug: 'glomed',
+    name: 'Glomed',
+    category: 'healthcare',
+    logoSrc: '/assets/aistudio/Glomed_-_Logo_6d1e4e21.png',
   },
   {
     slug: 'great-glove',
@@ -80,7 +39,7 @@ const CAROUSEL_TILES: CarouselBrandTile[] = [
   },
   {
     slug: 'hcd-homecare',
-    name: 'HCD Homecare Department',
+    name: 'HCD',
     category: 'healthcare',
     logoSrc: '/assets/aistudio/HCD_-_Logo_ff17ee7f.jpg',
   },
@@ -89,6 +48,12 @@ const CAROUSEL_TILES: CarouselBrandTile[] = [
     name: 'Mount Hagen',
     category: 'wellness',
     logoSrc: '/assets/aistudio/Mount_Hagen_-Logo_4ffbfbe8.jfif',
+  },
+  {
+    slug: 'nova-wellness',
+    name: 'Nova',
+    category: 'wellness',
+    logoSrc: '/assets/aistudio/Nova_Wellness_Store_Logo_8da77941.png',
   },
   {
     slug: 'sensav',
@@ -102,6 +67,11 @@ const CAROUSEL_TILES: CarouselBrandTile[] = [
     category: 'wellness',
     logoSrc: '/assets/aistudio/Starshots_Coffee_-_Logo_04cae2e1.jpg',
   },
+  {
+    slug: 'three-legs',
+    name: 'Three Legs Cooling Water',
+    category: 'wellness',
+  },
 ];
 
 export default function App() {
@@ -109,13 +79,9 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileBrandsExpanded, setMobileBrandsExpanded] = useState(false);
 
-  const [activeView, setActiveView] = useState<'home' | 'about' | 'contact' | 'retailer' | 'wellness' | 'healthcare' | 'brand' | 'catalog'>('home');
-  const [selectedBrandSlug, setSelectedBrandSlug] = useState<string>('pearlie-white');
+  const [activeView, setActiveView] = useState<'home' | 'about' | 'contact' | 'retailer'>('home');
   const [contactInitialBrand, setContactInitialBrand] = useState<string>('');
   const [retailerInitialBrand, setRetailerInitialBrand] = useState<string>('');
-  const [catalogCategory, setCatalogCategory] = useState<'all' | BrandCategory>('all');
-  const [highlightedSlug, setHighlightedSlug] = useState<string>('');
-  const [searchQuery, setSearchQuery] = useState<string>('');
 
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [visibleTiles, setVisibleTiles] = useState(6);
@@ -171,39 +137,6 @@ export default function App() {
   const maxCarouselIndex = Math.max(0, CAROUSEL_TILES.length - visibleTiles);
   const safeCarouselIndex = Math.min(carouselIndex, maxCarouselIndex);
 
-  const openCatalog = (category: 'all' | BrandCategory, brandSlug = '') => {
-    setCatalogCategory(category);
-    setHighlightedSlug(brandSlug);
-    setActiveView('catalog');
-    setMegaMenuOpen(false);
-    setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const openWellnessBrands = (brandSlug = '') => {
-    setHighlightedSlug(brandSlug);
-    setActiveView('wellness');
-    setMegaMenuOpen(false);
-    setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const openHealthcareBrands = (brandSlug = '') => {
-    setHighlightedSlug(brandSlug);
-    setActiveView('healthcare');
-    setMegaMenuOpen(false);
-    setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const openBrandPage = (brandSlug = 'pearlie-white') => {
-    setSelectedBrandSlug(brandSlug || 'pearlie-white');
-    setActiveView('brand');
-    setMegaMenuOpen(false);
-    setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   const openAbout = (sectionId?: string) => {
     setActiveView('about');
     setMegaMenuOpen(false);
@@ -243,36 +176,6 @@ export default function App() {
     setMobileMenuOpen(false);
   };
 
-  const filteredBrands = useMemo<BrandItem[]>(() => {
-    return ALL_BRANDS.filter((b) => {
-      if (catalogCategory !== 'all' && b.category !== catalogCategory) return false;
-      if (!searchQuery.trim()) return true;
-      const q = searchQuery.trim().toLowerCase();
-      return (
-        b.name.toLowerCase().includes(q) ||
-        b.tagline.toLowerCase().includes(q) ||
-        b.description.toLowerCase().includes(q)
-      );
-    });
-  }, [catalogCategory, searchQuery]);
-
-  const navigateHomeSection = (sectionId: string) => {
-    setMobileMenuOpen(false);
-    setMegaMenuOpen(false);
-    if (sectionId === 'contact-footer') {
-      document.getElementById('contact-footer')?.scrollIntoView({ behavior: 'smooth' });
-      return;
-    }
-    if (activeView !== 'home') {
-      setActiveView('home');
-      setTimeout(() => {
-        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-      }, 60);
-    } else {
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <div className="min-h-screen bg-white text-[#2c3e50]">
       {mapsQuotaExceeded && (
@@ -301,7 +204,6 @@ export default function App() {
             type="button"
             onClick={() => {
               setActiveView('home');
-              setHighlightedSlug('');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
             className="shrink-0 focus-visible:outline-2 focus-visible:outline-[#004473]"
@@ -345,7 +247,7 @@ export default function App() {
                 onClick={() => setMegaMenuOpen((prev) => !prev)}
                 aria-expanded={megaMenuOpen}
                 className={`whitespace-nowrap font-display text-[12px] font-bold tracking-[0.05em] uppercase transition-colors ${
-                  megaMenuOpen || activeView === 'catalog' || activeView === 'wellness' || activeView === 'healthcare' || activeView === 'brand'
+                  megaMenuOpen
                     ? 'text-[#D94B18]'
                     : 'text-[#004473] hover:text-[#D94B18]'
                 }`}
@@ -362,37 +264,25 @@ export default function App() {
                   <div className="grid grid-cols-1 gap-8 sm:grid-cols-[1fr_1.15fr]">
                     {/* Healthcare Brands */}
                     <div>
-                      <button
-                        type="button"
-                        onClick={() => openHealthcareBrands()}
-                        className="mb-3.5 block font-display text-[12px] font-extrabold tracking-[0.05em] text-[#004473] uppercase hover:text-[#D94B18]"
-                      >
+                      <h3 className="mb-3.5 block font-display text-[12px] font-extrabold tracking-[0.05em] text-[#004473] uppercase">
                         HEALTHCARE BRANDS
-                      </button>
+                      </h3>
                       <div className="grid grid-cols-2 gap-4">
                         <ul className="space-y-1.5">
                           {HEALTHCARE_BRANDS.slice(0, hcMid).map((brand) => (
                             <li key={brand.slug}>
-                              <button
-                                type="button"
-                                onClick={() => openBrandPage(brand.slug)}
-                                className="text-left text-[13px] font-medium text-[#004473] hover:text-[#D94B18] hover:underline"
-                              >
+                              <span className="block text-left text-[13px] font-medium text-[#004473]">
                                 {brand.name}
-                              </button>
+                              </span>
                             </li>
                           ))}
                         </ul>
                         <ul className="space-y-1.5">
                           {HEALTHCARE_BRANDS.slice(hcMid).map((brand) => (
                             <li key={brand.slug}>
-                              <button
-                                type="button"
-                                onClick={() => openBrandPage(brand.slug)}
-                                className="text-left text-[13px] font-medium text-[#004473] hover:text-[#D94B18] hover:underline"
-                              >
+                              <span className="block text-left text-[13px] font-medium text-[#004473]">
                                 {brand.name}
-                              </button>
+                              </span>
                             </li>
                           ))}
                         </ul>
@@ -401,37 +291,25 @@ export default function App() {
 
                     {/* Wellness Brands */}
                     <div>
-                      <button
-                        type="button"
-                        onClick={() => openWellnessBrands()}
-                        className="mb-3.5 block font-display text-[12px] font-extrabold tracking-[0.05em] text-[#004473] uppercase hover:text-[#D94B18]"
-                      >
+                      <h3 className="mb-3.5 block font-display text-[12px] font-extrabold tracking-[0.05em] text-[#004473] uppercase">
                         WELLNESS BRANDS
-                      </button>
+                      </h3>
                       <div className="grid grid-cols-2 gap-4">
                         <ul className="space-y-1.5">
                           {WELLNESS_BRANDS.slice(0, wbMid).map((brand) => (
                             <li key={brand.slug}>
-                              <button
-                                type="button"
-                                onClick={() => openBrandPage(brand.slug)}
-                                className="text-left text-[13px] font-medium text-[#004473] hover:text-[#D94B18] hover:underline"
-                              >
+                              <span className="block text-left text-[13px] font-medium text-[#004473]">
                                 {brand.name}
-                              </button>
+                              </span>
                             </li>
                           ))}
                         </ul>
                         <ul className="space-y-1.5">
                           {WELLNESS_BRANDS.slice(wbMid).map((brand) => (
                             <li key={brand.slug}>
-                              <button
-                                type="button"
-                                onClick={() => openBrandPage(brand.slug)}
-                                className="text-left text-[13px] font-medium text-[#004473] hover:text-[#D94B18] hover:underline"
-                              >
+                              <span className="block text-left text-[13px] font-medium text-[#004473]">
                                 {brand.name}
-                              </button>
+                              </span>
                             </li>
                           ))}
                         </ul>
@@ -505,44 +383,32 @@ export default function App() {
                 {mobileBrandsExpanded && (
                   <div className="mt-2 space-y-4 pb-2">
                     <div>
-                      <button
-                        type="button"
-                        onClick={() => openHealthcareBrands()}
-                        className="mb-1.5 block font-display text-xs font-extrabold text-[#D94B18] uppercase"
-                      >
+                      <p className="mb-1.5 block font-display text-xs font-extrabold text-[#D94B18] uppercase">
                         HEALTHCARE BRANDS
-                      </button>
+                      </p>
                       <div className="grid grid-cols-2 gap-x-3 gap-y-1.5">
                         {HEALTHCARE_BRANDS.map((brand) => (
-                          <button
+                          <span
                             key={brand.slug}
-                            type="button"
-                            onClick={() => openBrandPage(brand.slug)}
                             className="text-left text-[13px] text-[#004473]"
                           >
                             {brand.name}
-                          </button>
+                          </span>
                         ))}
                       </div>
                     </div>
                     <div>
-                      <button
-                        type="button"
-                        onClick={() => openWellnessBrands()}
-                        className="mb-1.5 block font-display text-xs font-extrabold text-[#D94B18] uppercase"
-                      >
+                      <p className="mb-1.5 block font-display text-xs font-extrabold text-[#D94B18] uppercase">
                         WELLNESS BRANDS
-                      </button>
+                      </p>
                       <div className="grid grid-cols-2 gap-x-3 gap-y-1.5">
                         {WELLNESS_BRANDS.map((brand) => (
-                          <button
+                          <span
                             key={brand.slug}
-                            type="button"
-                            onClick={() => openBrandPage(brand.slug)}
                             className="text-left text-[13px] text-[#004473]"
                           >
                             {brand.name}
-                          </button>
+                          </span>
                         ))}
                       </div>
                     </div>
@@ -577,7 +443,7 @@ export default function App() {
       </header>
 
       {/* =====================================================================
-          Main View Switch: Homepage vs. About Us vs. Contact Us vs. Become a Retailer vs. Catalog
+          Main View Switch: Homepage vs. About Us vs. Contact Us vs. Become a Retailer
          ===================================================================== */}
       {activeView === 'about' ? (
         <AboutPage
@@ -587,195 +453,7 @@ export default function App() {
       ) : activeView === 'contact' ? (
         <ContactPage initialBrand={contactInitialBrand} />
       ) : activeView === 'retailer' ? (
-        <BecomeARetailerPage
-          initialBrand={retailerInitialBrand}
-          onBrowseBrands={() => openWellnessBrands()}
-        />
-      ) : activeView === 'wellness' ? (
-        <WellnessBrandsPage
-          highlightedSlug={highlightedSlug}
-          onSwitchToHealthcare={() => openHealthcareBrands()}
-          onSelectBrand={(slug) => openBrandPage(slug)}
-          onContactSales={() => openContact('Wellness Brands Portfolio')}
-          onOpenInquiry={(brand, category) => openInquiry(brand, category)}
-        />
-      ) : activeView === 'healthcare' ? (
-        <HealthcareBrandsPage
-          highlightedSlug={highlightedSlug}
-          onSwitchToWellness={() => openWellnessBrands()}
-          onSelectBrand={(slug) => openBrandPage(slug)}
-          onContactSales={() => openContact('Healthcare Brands Portfolio')}
-          onOpenInquiry={(brand, category) => openInquiry(brand, category)}
-        />
-      ) : activeView === 'brand' ? (
-        <BrandPage
-          brandSlug={selectedBrandSlug}
-          onNavigateHome={() => {
-            setActiveView('home');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          onNavigateCategory={(cat) =>
-            cat === 'wellness' ? openWellnessBrands() : openHealthcareBrands()
-          }
-          onSelectBrand={(slug) => openBrandPage(slug)}
-          onNavigateContact={(brandName) => openContact(brandName)}
-          onNavigateRetailer={(brandName) => openBecomeARetailer(brandName)}
-          onOpenInquiry={(brand, category) => openInquiry(brand, category)}
-          onOpenNovaChannels={() => setNovaChannelsOpen(true)}
-        />
-      ) : activeView === 'catalog' ? (
-        <main>
-          <section className="bg-[#E2ECF3] py-12 sm:py-14">
-            <div className="mx-auto max-w-[1180px] px-5 sm:px-6">
-              <button
-                type="button"
-                onClick={() => setActiveView('home')}
-                className="mb-4 inline-flex items-center gap-1.5 font-display text-xs font-bold tracking-wider text-[#004473] uppercase hover:text-[#D94B18]"
-              >
-                <ChevronLeft className="h-4 w-4" />
-                Back to Home
-              </button>
-              <h1 className="font-display text-3xl font-extrabold text-[#004473] sm:text-4xl">
-                Our Brand Portfolio
-              </h1>
-              <p className="mt-2 max-w-2xl text-[15px] text-[#2c3e50]">
-                FDA-registered import and nationwide distribution across pharmacies, supermarkets,
-                clinics, and wellness retailers in the Philippines.
-              </p>
-
-              <div className="mt-7 flex flex-col justify-between gap-4 md:flex-row md:items-center">
-                <div className="inline-flex flex-wrap rounded-md border border-[#004473]/15 bg-white p-1">
-                  {(['all', 'wellness', 'healthcare'] as const).map((tab) => (
-                    <button
-                      key={tab}
-                      type="button"
-                      onClick={() => {
-                        if (tab === 'wellness') {
-                          openWellnessBrands();
-                        } else if (tab === 'healthcare') {
-                          openHealthcareBrands();
-                        } else {
-                          setCatalogCategory(tab);
-                          setHighlightedSlug('');
-                        }
-                      }}
-                      className={`rounded px-4 py-2 font-display text-xs font-bold tracking-wide uppercase transition-colors ${
-                        catalogCategory === tab
-                          ? 'bg-[#004473] text-white'
-                          : 'text-[#004473] hover:bg-slate-100'
-                      }`}
-                    >
-                      {tab === 'all'
-                        ? 'All Brands'
-                        : tab === 'wellness'
-                        ? 'Wellness Brands'
-                        : 'Healthcare Brands'}
-                    </button>
-                  ))}
-                </div>
-
-                <div className="relative w-full md:w-72">
-                  <Search className="pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-[#5a6d7e]" />
-                  <input
-                    type="search"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search brands..."
-                    aria-label="Search brands"
-                    className="w-full rounded border border-[#004473]/25 bg-white py-2.5 pr-3 pl-9 text-sm text-[#2c3e50] focus:border-[#004473] focus:outline-none"
-                  />
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="py-12 sm:py-16">
-            <div className="mx-auto max-w-[1180px] px-5 sm:px-6">
-              {filteredBrands.length === 0 ? (
-                <div className="rounded-md bg-slate-50 p-12 text-center">
-                  <p className="text-base text-[#2c3e50]">No brands matched your search.</p>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setCatalogCategory('all');
-                      setSearchQuery('');
-                    }}
-                    className="mt-4 rounded bg-[#F7A600] px-5 py-2.5 font-display text-xs font-bold text-white uppercase"
-                  >
-                    RESET FILTERS
-                  </button>
-                </div>
-              ) : (
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {filteredBrands.map((brand) => {
-                    const isHighlighted = highlightedSlug === brand.slug;
-                    return (
-                      <article
-                        key={brand.slug}
-                        className={`flex flex-col rounded-md border bg-white p-6 transition-shadow ${
-                          isHighlighted
-                            ? 'border-[#F7A600] ring-2 ring-[#F7A600]/30 shadow-md'
-                            : 'border-[#004473]/12 hover:shadow-md'
-                        }`}
-                      >
-                        <div className="flex items-center gap-2 text-xs font-semibold text-[#D94B18]">
-                          <span>
-                            {brand.category === 'wellness' ? 'Wellness Brands' : 'Healthcare Brands'}
-                          </span>
-                          <span aria-hidden="true">·</span>
-                          <span>{brand.origin}</span>
-                        </div>
-                        <h2 className="mt-2 font-display text-xl font-bold text-[#004473]">
-                          {brand.name}
-                        </h2>
-                        <p className="mt-1 text-sm font-semibold text-[#2c3e50]">{brand.tagline}</p>
-                        <p className="mt-2 flex-1 text-sm text-[#5a6d7e]">{brand.description}</p>
-                        <div className="mt-5 flex items-center justify-between gap-3">
-                          <button
-                            type="button"
-                            onClick={() => openBrandPage(brand.slug)}
-                            className="font-display text-xs font-bold tracking-wider text-[#F7A600] hover:text-[#d88e00]"
-                          >
-                            View Brand &gt;
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() =>
-                              openInquiry(
-                                brand.name,
-                                brand.category === 'wellness'
-                                  ? 'Wellness Brands'
-                                  : 'Healthcare Brands'
-                              )
-                            }
-                            className="font-display text-xs font-bold tracking-wider text-[#004473] uppercase hover:text-[#D94B18]"
-                          >
-                            Inquire to Carry →
-                          </button>
-                        </div>
-                      </article>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
-          </section>
-
-          <section className="bg-[#E2ECF3] py-16">
-            <div className="mx-auto flex max-w-[1180px] flex-col items-center px-5 text-center sm:px-6">
-              <h2 className="font-display text-2xl font-semibold text-[#004473] sm:text-[28px]">
-                Interested in carrying our brands in your store?
-              </h2>
-              <button
-                type="button"
-                onClick={() => openInquiry()}
-                className="mt-6 rounded bg-[#F7A600] px-7 py-3.5 font-display text-xs font-bold tracking-[0.06em] text-white uppercase transition-colors hover:bg-[#df9500]"
-              >
-                GET IN TOUCH
-              </button>
-            </div>
-          </section>
-        </main>
+        <BecomeARetailerPage initialBrand={retailerInitialBrand} />
       ) : (
         <main>
           {/* =================================================================
@@ -971,13 +649,6 @@ export default function App() {
                       Honeylife honey products, &amp; Chandanalepa herbal lotions to Eden Foods whole
                       grains and organic beans.
                     </p>
-                    <button
-                      type="button"
-                      onClick={() => openWellnessBrands()}
-                      className="mt-6 rounded bg-[#F7A600] px-6 py-3 font-display text-[12px] font-bold tracking-[0.06em] text-white uppercase transition-colors hover:bg-[#df9500]"
-                    >
-                      EXPLORE WELLNESS BRANDS
-                    </button>
                   </div>
                 </div>
               </article>
@@ -1001,13 +672,6 @@ export default function App() {
                       PPE, dental supplies &amp; medical equipment — from latex and nitrile gloves,
                       facemasks, wheelchairs, to dental &amp; surgical safety supplies.
                     </p>
-                    <button
-                      type="button"
-                      onClick={() => openHealthcareBrands()}
-                      className="mt-6 rounded bg-[#F7A600] px-6 py-3 font-display text-[12px] font-bold tracking-[0.06em] text-white uppercase transition-colors hover:bg-[#df9500]"
-                    >
-                      EXPLORE HEALTHCARE BRANDS
-                    </button>
                   </div>
                 </div>
               </article>
@@ -1038,21 +702,30 @@ export default function App() {
                   }}
                 >
                   {CAROUSEL_TILES.map((tile) => (
-                    <button
+                    <div
                       key={tile.slug}
-                      type="button"
-                      onClick={() => openBrandPage(tile.slug)}
                       style={{ flex: `0 0 ${100 / visibleTiles}%` }}
-                      className="flex min-h-[82px] items-center justify-center px-3 py-2 transition-transform hover:-translate-y-0.5"
-                      title={`Explore ${tile.name}`}
+                      className="flex min-h-[82px] items-center justify-center px-3 py-2"
+                      title={tile.name}
                     >
-                      <img
-                        src={tile.logoSrc}
-                        alt={`${tile.name} logo`}
-                        referrerPolicy="no-referrer"
-                        className="max-h-[54px] max-w-[145px] w-auto rounded-[3px] object-contain"
-                      />
-                    </button>
+                      {tile.logoSrc ? (
+                        <img
+                          src={tile.logoSrc}
+                          alt={`${tile.name} logo`}
+                          referrerPolicy="no-referrer"
+                          className="max-h-[54px] max-w-[145px] w-auto rounded-[3px] object-contain"
+                        />
+                      ) : (
+                        <div className="flex flex-col items-center justify-center text-center leading-tight">
+                          <span className="font-display text-[15px] font-extrabold tracking-[0.04em] text-[#004473] uppercase">
+                            THREE LEGS
+                          </span>
+                          <span className="font-display text-[10px] font-semibold tracking-[0.08em] text-[#D94B18] uppercase">
+                            Cooling Water
+                          </span>
+                        </div>
+                      )}
+                    </div>
                   ))}
                 </div>
               </div>
@@ -1085,7 +758,7 @@ export default function App() {
                 </p>
                 <button
                   type="button"
-                  onClick={() => openWellnessBrands()}
+                  onClick={() => setNovaChannelsOpen(true)}
                   className="mt-7 rounded bg-[#004473] px-6 py-3.5 font-display text-[12px] font-bold tracking-[0.06em] text-white uppercase transition-colors hover:bg-[#0b3c61]"
                 >
                   SHOP ONLINE AT NOVA WELLNESS
@@ -1127,7 +800,7 @@ export default function App() {
           Footer
          ===================================================================== */}
       <footer id="contact-footer" className="border-t border-[#004473]/10 bg-white py-14 sm:py-16">
-        <div className="mx-auto grid max-w-[1180px] grid-cols-1 gap-8 px-5 sm:grid-cols-2 sm:px-6 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.35fr]">
+        <div className="mx-auto grid max-w-[1180px] grid-cols-1 gap-8 px-5 sm:grid-cols-2 sm:px-6 lg:grid-cols-[1.4fr_1fr_1fr_1.35fr]">
           <div>
             <button
               type="button"
@@ -1167,32 +840,6 @@ export default function App() {
                   className="hover:text-[#D94B18] hover:underline"
                 >
                   About Nova Wellness
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-display text-[11px] font-bold tracking-[0.08em] text-[#004473] uppercase">
-              BRANDS
-            </h3>
-            <ul className="mt-3.5 space-y-2 text-[13px] text-[#004473]">
-              <li>
-                <button
-                  type="button"
-                  onClick={() => openWellnessBrands()}
-                  className="hover:text-[#D94B18] hover:underline"
-                >
-                  Wellness Brands
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => openHealthcareBrands()}
-                  className="hover:text-[#D94B18] hover:underline"
-                >
-                  Healthcare Brands
                 </button>
               </li>
             </ul>
@@ -1245,7 +892,7 @@ export default function App() {
         </div>
 
         <div className="mx-auto max-w-[1180px] px-5 sm:px-6">
-          <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-[#004473]/10 pt-5 lg:pl-[24.5%]">
+          <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-[#004473]/10 pt-5 lg:pl-[29.5%]">
             <span className="font-display text-[11px] font-bold tracking-[0.08em] text-[#004473] uppercase">
               BUY ONLINE THROUGH NOVA WELLNESS
             </span>
@@ -1303,7 +950,6 @@ export default function App() {
       <NovaChannelsModal
         isOpen={novaChannelsOpen}
         onClose={() => setNovaChannelsOpen(false)}
-        onExploreWellnessBrands={() => openWellnessBrands()}
       />
     </div>
   );

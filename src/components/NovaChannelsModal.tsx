@@ -4,13 +4,11 @@ import { ArrowRight, X } from 'lucide-react';
 interface NovaChannelsModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onExploreWellnessBrands: () => void;
 }
 
 export const NovaChannelsModal: React.FC<NovaChannelsModalProps> = ({
   isOpen,
   onClose,
-  onExploreWellnessBrands,
 }) => {
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
@@ -56,24 +54,6 @@ export const NovaChannelsModal: React.FC<NovaChannelsModalProps> = ({
         </div>
 
         <div className="mt-5 space-y-2.5">
-          <button
-            type="button"
-            onClick={() => {
-              onClose();
-              onExploreWellnessBrands();
-            }}
-            className="flex w-full items-center justify-between gap-4 rounded-md border border-[#004473]/15 bg-[#f8fbfd] px-4 py-3.5 text-left transition-colors hover:border-[#F7A600] hover:bg-[#fffdf7]"
-          >
-            <div>
-              <div className="font-display text-sm font-bold text-[#004473]">
-                Nova Wellness Official Store &amp; Catalog
-              </div>
-              <div className="mt-0.5 text-xs text-[#5a6d7e]">
-                Browse Tea Tree Therapy, Honeylife, Eden Foods, Carlson &amp; more
-              </div>
-            </div>
-            <ArrowRight className="h-4 w-4 shrink-0 text-[#D94B18]" />
-          </button>
 
           <a
             href="https://www.lazada.com.ph"

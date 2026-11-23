@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { HEALTHCARE_BRANDS, WELLNESS_BRANDS } from '../data/brands';
 
 interface BecomeARetailerPageProps {
-  onBrowseBrands: () => void;
   initialBrand?: string;
 }
 
@@ -25,7 +24,6 @@ const RETAILER_STEPS = [
 ];
 
 export const BecomeARetailerPage: React.FC<BecomeARetailerPageProps> = ({
-  onBrowseBrands,
   initialBrand = '',
 }) => {
   const [firstName, setFirstName] = useState('');
@@ -114,13 +112,6 @@ export const BecomeARetailerPage: React.FC<BecomeARetailerPageProps> = ({
                 className="whitespace-nowrap rounded bg-[#F7A600] px-6 py-3 font-display text-[12px] font-bold tracking-[0.06em] text-white uppercase transition-colors hover:bg-[#df9500]"
               >
                 ENQUIRE NOW
-              </button>
-              <button
-                type="button"
-                onClick={onBrowseBrands}
-                className="whitespace-nowrap rounded border-[1.5px] border-[#004473] bg-white px-5 py-[10.5px] font-display text-[12px] font-bold tracking-[0.05em] text-[#004473] uppercase transition-colors hover:bg-[#004473] hover:text-white"
-              >
-                BROWSE OUR BRANDS
               </button>
             </div>
           </div>
