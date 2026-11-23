@@ -3,7 +3,7 @@
 React + Vite + Tailwind CSS website ready to deploy either as a **Node.js (Express) app** or as **static files (`dist/`)** on any host (cPanel / Apache / Nginx, Vercel, Netlify, Cloudflare Pages, GitHub Pages).
 
 ## Prerequisites (Node.js)
-- **Node.js**: `22+` (pinned in `.nvmrc` and `package.json` `engines`)
+- **Node.js**: `v26.13.1` (pinned in `.nvmrc` and `package.json` `engines`)
 - **npm**: `10+` (locked dependencies in `package-lock.json`)
 
 ## Install & Build
